@@ -1,9 +1,9 @@
 #!/usr/bin/python3
 from format.Entities import Entities
-# from format.InSentences import InSentences
-# from format.Sentences import Sentences
-# from format.AboutThemes import AboutThemes
-# from format.Themes import Themes
+from format.InSentences import InSentences
+from format.Sentences import Sentences
+from format.AboutThemes import AboutThemes
+from format.Themes import Themes
 # from format.InDocuments import InDocuments
 # from format.Documents import Documents
 
@@ -41,24 +41,24 @@ if __name__ == "__main__":
 		sys.exit()
 
 	# Generate node files
-	# print('Generating Nodes: ENTITY')
-	# Entities(files_dir=DWNLD_DIR, destination=NEO_DATA_DIR + "/entities.csv.gz")
+	print('Generating Nodes: ENTITY')
+	Entities(files_dir=DWNLD_DIR, destination=NEO_DATA_DIR + "/entities.csv.gz")
 
-	# if config.MINI != True:
-	# 	print('Generating Nodes: SENTENCE')
-	# 	Sentences(files_dir=DWNLD_DIR, destination=NEO_DATA_DIR + "/sentences.csv.gz")
+	if config.MINI == False:
+		print('Generating Nodes: SENTENCE')
+		Sentences(files_dir=DWNLD_DIR, destination=NEO_DATA_DIR + "/sentences.csv.gz")
 
-	# 	print('Generating Nodes: THEME')
-	# 	Themes(files_dir=DWNLD_DIR, destination=NEO_DATA_DIR + "/themes.csv.gz")
+		print('Generating Nodes: THEME')
+		Themes(files_dir=DWNLD_DIR, destination=NEO_DATA_DIR + "/themes.csv.gz")
 
-	# Generate relationship files
-	# print('Generating Relationships: STATEMENT')
-	# Statements(files_dir=DWNLD_DIR, destination=NEO_DATA_DIR + "/statements.csv.gz")
+	Generate relationship files
+	print('Generating Relationships: STATEMENT')
+	Statements(files_dir=DWNLD_DIR, destination=NEO_DATA_DIR + "/statements.csv.gz")
 
-	# if config.MINI != True:
-	# 	print('Generating Relationships: IN SENTENCE')
-	# 	In_Sentences(files_dir=DWNLD_DIR, destination=NEO_DATA_DIR + "/in_sentences.csv.gz")
+	if config.MINI == False:
+		print('Generating Relationships: IN SENTENCE')
+		In_Sentences(files_dir=DWNLD_DIR, destination=NEO_DATA_DIR + "/in_sentences.csv.gz")
 
-	# 	print('Generating Relationships: HAS THEME')
-	# 	Has_Themes(files_dir=DWNLD_DIR, destination=NEO_DATA_DIR + "/has_themes.csv.gz")
+		print('Generating Relationships: HAS THEME')
+		Has_Themes(files_dir=DWNLD_DIR, destination=NEO_DATA_DIR + "/has_themes.csv.gz")
 
