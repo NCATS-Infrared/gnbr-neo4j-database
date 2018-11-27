@@ -35,7 +35,7 @@ To download GNBR and format for neo4j import, simply run the python executable m
 ```bash
 python -m build
 ```
-If you have a decent internet connection the download should be pretty fast.  The formatting takes a while (~30 mins) and is quite memory intensive (~ 20-30 GB peak usage).  Future updates will use the `dask` package for lazy, multi-threaded data processing and i/o.
+If you have a decent internet connection the download should be pretty fast.  The formatting takes a while (30 mins) and is quite memory intensive (20-30 GB peak usage).  Future updates will use the `dask` package for lazy, multi-threaded data processing and i/o.
 ## (Dockerized) Neo4J import
 To import the data into neo4j, simply run the docker shell executable from your bash shell.
 ```bash
