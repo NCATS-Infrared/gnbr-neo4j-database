@@ -1,6 +1,6 @@
-import urllib2
+from urllib.request import urlopen
 import threading
-from Queue import Queue
+from queue import Queue
 import sys, os, re
 
 class ThreadedDownload(object):
@@ -52,7 +52,7 @@ class ThreadedDownload(object):
 					self.success = True
 					return self.success
 				
-				remote_file = urllib2.urlopen(self.url)
+				remote_file = urlopen(self.url)
 				package = remote_file.read()
 				remote_file.close()
 				
@@ -65,7 +65,7 @@ class ThreadedDownload(object):
 				
 				self.success = True
 				
-			except Exception, e:
+			except Exception as e:
 				self.error = e
 				
 			return self.success
@@ -134,12 +134,12 @@ class ThreadedDownload(object):
 
 if __name__ == "__main__":
 	if len(sys.argv) == 1:
-		print 'No source URLs given.'
+		print('No source URLs given.')
 		sys.exit()
 	
 	url_source_path = sys.argv[1]
 	if not os.path.exists(url_source_path):
-		print '`%s` not found.' % url_source_path
+		print('`%s` not found.' % url_source_path)
 		sys.exit()
 	
 	# Load urls
@@ -151,7 +151,7 @@ if __name__ == "__main__":
 	if len(sys.argv) >= 3:
 		destination = sys.argv[2]
 		if not os.path.exists(destination):
-			print 'Destination `%s` does not exist.'
+			print('Destination `%s` does not exist.')
 			sys.exit()
 	else:
 		destination = '.'
@@ -164,11 +164,11 @@ if __name__ == "__main__":
 	
 	downloader = ThreadedDownload(urls, destination, False, threads, 3)
 	
-	print 'Downloading %s files' % len(urls)
+	print('Downloading %s files' % len(urls))
 	downloader.run()
-	print 'Downloaded %(success)s of %(total)s' % {'success': len(downloader.report['success']), 'total': len(urls)}
+	print('Downloaded %(success)s of %(total)s' % {'success': len(downloader.report['success']), 'total': len(urls)})
 	
 	if len(downloader.report['failure']) > 0:
-		print '\nFailed urls:'
+		print('\nFailed urls:')
 		for url in downloader.report['failure']:
-			print url
+			print(url)

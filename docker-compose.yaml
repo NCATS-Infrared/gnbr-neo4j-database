@@ -1,0 +1,19 @@
+version: '3'
+services:
+  db:
+    image: neo4j:latest
+    environment:
+      - NEO4J_AUTH=none
+      # This sets java's heap size to 1G. If you get java.lang.OutOfMemoryError
+      # then you may need to increase this.
+      - _JAVA_OPTIONS="-Xmx16g"
+    ports:
+      - "7474:7474"
+      - "7473:7473"
+      - "7687:7687"
+    volumes:
+      # NOTE: if docker-compose is run under 'sudo' then $HOME will be 'root'
+      # Change path2neo to your local path
+      - ~/neo4j/data:/data
+      - ~/neo4j/import:/import
+      - ~/neo4j/logs:/logs 
