@@ -143,12 +143,12 @@ def WriteHasMentions(concepts, has_mention_file):
 	return
 
 def WriteInSentence(concepts, in_sentence_file):
-	in_sentence = concepts[['mention', 'sentence_id']]
+	in_sentence = concepts[['uri', 'sentence_id']]
 	in_sentence = in_sentence.drop_duplicates()
 	print('Writing edges file: %s' % in_sentence_file)
 	in_sentence.to_csv(in_sentence_file, 
-	                   columns=["mention", "sentence_id"], 
-	                   header=[":START_ID(Mention-ID)", ":END_ID(Sentence-ID)"], 
+	                   columns=["uri", "sentence_id"], 
+	                   header=[":START_ID(Entity-ID)", ":END_ID(Sentence-ID)"], 
 	                   index=False, compression='gzip')
 	return
 
@@ -157,7 +157,7 @@ def Sentences(gnbr_df, sentences_file, has_theme_file):
 	sentence_df = gnbr_df[['subj_id', 'obj_id', 'text', 'pmid', 'path', 'sentence_id', 'path_id']]
 	sentences = sentence_df[['sentence_id', 'text', 'pmid']]
 	sentences = sentences.drop_duplicates(subset='sentence_id')
-	print('Writing nodes file: %s' % sentences)
+	print('Writing nodes file: %s' % sentences_file)
 	sentences.to_csv(sentences_file, 
 	                columns=["sentence_id", "text", "pmid"], 
 	                header=[":ID(Sentence-ID)", "text", "pmid"], 
@@ -185,7 +185,7 @@ def Themes(gnbr_df, themes_file):
 	return
 
 def Statements(gnbr_df, statements_file):
-	statements = gnbr_df.groupby(by=['subj_id','obj_id']).mean(numeric_only=True)
+	statements = gnbr_df.groupby(by=['subj_id','obj_id']).sum(numeric_only=True)
 	statements = statements.select_dtypes(include='float64')
 	statements = statements.drop(['loc'], axis=1)
 	statements = statements[[i for i in statements.columns if not i.endswith('.ind')]]
