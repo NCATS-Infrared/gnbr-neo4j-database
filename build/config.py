@@ -8,14 +8,14 @@ NEO_DATA_DIR="~/neo4j/import"
 
 # Raw GNBR file URLs
 URLS=[
-"https://zenodo.org/record/1495808/files/part-i-chemical-disease-path-theme-distributions.txt.zip",
-"https://zenodo.org/record/1495808/files/part-i-chemical-gene-path-theme-distributions.txt.zip",
-"https://zenodo.org/record/1495808/files/part-i-gene-disease-path-theme-distributions.txt.zip",
-"https://zenodo.org/record/1495808/files/part-i-gene-gene-path-theme-distributions.txt.zip",
-"https://zenodo.org/record/1495808/files/part-ii-dependency-paths-chemical-disease-sorted-with-themes.txt.zip",
-"https://zenodo.org/record/1495808/files/part-ii-dependency-paths-chemical-gene-sorted-with-themes.txt.zip",
-"https://zenodo.org/record/1495808/files/part-ii-dependency-paths-gene-disease-sorted-with-themes.txt.zip",
-"https://zenodo.org/record/1495808/files/part-ii-dependency-paths-gene-gene-sorted-with-themes.txt.zip"
+"https://zenodo.org/record/3346007/files/part-i-chemical-disease-path-theme-distributions.txt.zip",
+"https://zenodo.org/record/3346007/files/part-i-chemical-gene-path-theme-distributions.txt.zip",
+"https://zenodo.org/record/3346007/files/part-i-gene-disease-path-theme-distributions.txt.zip",
+"https://zenodo.org/record/3346007/files/part-i-gene-gene-path-theme-distributions.txt.zip",
+"https://zenodo.org/record/3346007/files/part-ii-dependency-paths-chemical-disease-sorted-with-themes.txt.zip",
+"https://zenodo.org/record/3346007/files/part-ii-dependency-paths-chemical-gene-sorted-with-themes.txt.zip",
+"https://zenodo.org/record/3346007/files/part-ii-dependency-paths-gene-disease-sorted-with-themes.txt.zip",
+"https://zenodo.org/record/3346007/files/part-ii-dependency-paths-gene-gene-sorted-with-themes.txt.zip"
 ]
 
 # Header for GNBR part 2 files (entities, sentences, dependency paths).
@@ -32,14 +32,14 @@ HEADER = [
 
 # Names for output files
 FILES = {
-	'entities': 'entity.csv.gz',
-	'mentions': 'mention.csv.gz',
-	'sentences': 'sentence.csv.gz',
-	'themes': 'theme.csv.gz',
-	'has_mentions': 'has_mention.csv.gz',
-	'in_sentences': 'in_sentence.csv.gz',
-	'has_themes': 'has_theme.csv.gz',
-	'statements': 'statement.csv.gz'
+    'entities': 'entity.csv.gz',
+    'mentions': 'mention.csv.gz',
+    'sentences': 'sentence.csv.gz',
+    'themes': 'theme.csv.gz',
+    'has_mentions': 'has_mention.csv.gz',
+    'in_sentences': 'in_sentence.csv.gz',
+    'has_themes': 'has_theme.csv.gz',
+    'statements': 'statement.csv.gz'
 }
 
 

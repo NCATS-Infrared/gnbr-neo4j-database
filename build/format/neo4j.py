@@ -143,12 +143,12 @@ def WriteHasMentions(concepts, has_mention_file):
 	return
 
 def WriteInSentence(concepts, in_sentence_file):
-	in_sentence = concepts[['uri', 'sentence_id']]
+	in_sentence = concepts[['uri','mention','sentence_id']]
 	in_sentence = in_sentence.drop_duplicates()
 	print('Writing edges file: %s' % in_sentence_file)
 	in_sentence.to_csv(in_sentence_file, 
-	                   columns=["uri", "sentence_id"], 
-	                   header=[":START_ID(Entity-ID)", ":END_ID(Sentence-ID)"], 
+	                   columns=["uri", "mention", "sentence_id"], 
+	                   header=[":START_ID(Entity-ID)", "etext", ":END_ID(Sentence-ID)"], 
 	                   index=False, compression='gzip')
 	return
 
@@ -186,8 +186,8 @@ def Themes(gnbr_df, themes_file):
 
 def Statements(gnbr_df, statements_file):
 	statements = gnbr_df.groupby(by=['subj_id','obj_id']).sum(numeric_only=True)
-	statements = statements.select_dtypes(include='float64')
 	statements = statements.drop(['loc'], axis=1)
+	statements = statements.select_dtypes(include='float64')
 	statements = statements[[i for i in statements.columns if not i.endswith('.ind')]]
 	statements = statements.rank(numeric_only=True, pct=True, method='dense')
 	# statements = statements[statements > 0.05].dropna(how='all')
